@@ -60,3 +60,31 @@ Player.prototype.moveForward = function (){
 // calling the above function on the original object
 player1.moveForward()
 
+
+// ------------------Prototypal Inheritance--------------------------
+
+function Person(name){
+    this.name = name;
+  }
+  
+  Person.prototype.sayName = function(){
+    console.log(`Hello, I'm ${this.name}`)
+  }
+  
+  function PlayerTwo(name, marker){
+    this.name = name;
+    this.marker = marker;
+  }
+  
+  PlayerTwo.prototype.getMarker = function(){
+    console.log(`My marker is "${this.marker}"`)
+  }
+  
+  // Now make "PlayerTwo" objects inherit from "Person"
+  Object.setPrototypeOf(PlayerTwo.prototype, Person.prototype);
+  console.log(Object.getPrototypeOf(PlayerTwo.prototype))
+  
+  const playerMember1 = new PlayerTwo("Steve", "X")
+  
+  playerMember1.sayName();
+  playerMember1.getMarker()
